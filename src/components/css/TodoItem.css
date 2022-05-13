@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@300&display=swap');
+
+.Principal_item{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+}
+.TodoItem {
+  font-family: 'M PLUS Code Latin', sans-serif;
+    background-color: #FAFAFA;
+    width: calc(100% - 20%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-top-right-radius: 45px;
+    margin-bottom: 10px;
+
+  }
+  
+  .TodoItem-p {
+    margin: 24px 0 24px 24px;
+    width: calc(100% - 120px);
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .TodoItem-p--complete {
+    text-decoration: line-through;
+    text-decoration-color: rgb(0, 0, 0);
+  }
+  
+  .Icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    width: 38px;
+    font-size: 24px;
+    font-weight: bold;
+    /* background-color: #CCC; */
+  }
+  
+  .Icon-check {
+    position: absolute;
+    left: 12px;
+  }
+  .Icon-check--active {
+    color: #3ca500;
+  }
+  
+  .Icon-delete {
+    position: absolute;
+    top: -24px;
+    right: 0;
+    background-color: red;
+    border-radius: 60px;
+  }
+  .Icon-delete:hover {
+    color: rgb(221, 0, 0);
+    background-color: white;
+  }

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
+.searchPrincipal{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+h5{
+  color: rgb(219, 219, 219);
+  text-align: center;
+  font-family: 'Fira Code', monospace;
+}
+.TodoSearch {
+    background: #fafafa;
+    border: 2px solid #093b02;
+    margin: 0 24px;
+    height: 44px;
+    width: calc(100% - 60%);
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    color: #000000;
+    box-shadow: 0px 5px 50px rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+  }
+  
+  .TodoSearch::placeholder {
+    color: #c9c1c1;
+    font-family: 'Montserrat';
+    font-weight: 400;
+  }
+  
+  .TodoSearch:focus {
+    outline-color: #61DAFA;
+  }
