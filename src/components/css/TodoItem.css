@@ -25,7 +25,7 @@
   
   .TodoItem-p {
     margin: 24px 0 24px 24px;
-    width: calc(100% - 120px);
+    width: calc(100% - 180px);
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
@@ -66,3 +66,7 @@
     color: rgb(221, 0, 0);
     background-color: white;
   }
+.TodoItemButton button{
+  margin: 10px;
+  border-radius:10px
+}

@@ -2,15 +2,15 @@ import React from "react";
 import { TodoContext } from "../todoContext";
 import "./css/todoForms.css";
 import axios from "axios";
-const {
-  REACT_APP_SERVER,
-} = process.env;
+const { REACT_APP_SERVER } = process.env;
 
 function Form() {
   const [newTodoValue, setNewTodoValue] = React.useState({
-    title: "",
-    description: "",
     expirationDate: "",
+    timeCalendar: "",
+    title: "",
+    location: "",
+    description: "",
   });
   const { addTodo, setOpenModal } = React.useContext(TodoContext);
 
@@ -25,8 +25,8 @@ function Form() {
   const onCancel = () => {
     setOpenModal(false);
   };
-  const onSubmit =  (e) => {
-  addTodo(newTodoValue);
+  const onSubmit = (e) => {
+    addTodo(newTodoValue);
     setOpenModal(false);
     window.location.reload(true);
   };
@@ -58,6 +58,29 @@ function Form() {
           onChange={onChange}
           value={newTodoValue.expirationDate}
         />
+        <div className="timeCalendarContainer">
+          <div className="timeCalendarHora">
+            <h2>Hora:</h2>
+            <input
+              type="time"
+              className="timeCalendar"
+              name="timeCalendar"
+              onChange={onChange}
+              value={newTodoValue.timeCalendar}
+            />
+          </div>
+          <div className="timeCalendarLocation">
+            <h3>lugar: </h3>
+            <input
+              type="text"
+              name="location"
+              className="form-control"
+              placeholder="lugar"
+              onChange={onChange}
+              value={newTodoValue.location}
+            />
+          </div>
+        </div>
         <div className="TodoForm-buttonContainer">
           <button
             type="button"

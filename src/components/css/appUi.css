@@ -8,3 +8,12 @@ body{
    width: 100vw;
    background-attachment: fixed;
 }
+.mapContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.mapContainer iframe{
+    border-radius: 10px;
+    margin: 10px;
+}

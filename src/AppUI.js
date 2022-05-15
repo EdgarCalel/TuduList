@@ -12,6 +12,9 @@ import { EmptyTodos } from "./components/Skeleton/EmptyTodos";
 import { TodosError } from "./components/Skeleton/TodosError";
 import { TodosLoading } from "./components/Skeleton/TodosLoading";
 import "./components/css/appUi.css";
+import ModalCalendar from './components/modalCalendar'
+
+
 function AppUI() {
   const {
     error,
@@ -29,6 +32,7 @@ function AppUI() {
       <TodoCounter />
       <TodoSearch />
       <TodoList>
+      <ModalCalendar />
         {error && <TodosError error={error} />}
         {loading && <TodosLoading />}
         {!loading && !searchedTodos.length && <EmptyTodos />}
@@ -44,7 +48,6 @@ function AppUI() {
           />
         ))
         }
-        {console.log(searchedTodos)}
       </TodoList>
       {!!openModal && (
         <Modal>

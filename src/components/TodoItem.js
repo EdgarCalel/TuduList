@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./css/TodoItem.css";
+import "./css/todoForms.css";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { TodoContext } from "../todoContext/index";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -10,20 +12,19 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
+  backgroundColor: "transparent",
 };
 function TodoItem(props) {
   const [modalEditar, setModalEditar] = useState({
-    title: "",
-    description: "",
     expirationDate: "",
+    timeCalendar: "",
+    title: "",
+    location: "",
+    description: "",
   });
 
-  const { updateTodo, setOpenModal } = React.useContext(TodoContext);
+  const { updateTodo, setOpenModal, AggCalendarItem } =
+    React.useContext(TodoContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -36,7 +37,6 @@ function TodoItem(props) {
     });
   };
   const onSubmit = async (e) => {
-
     updateTodo(modalEditar);
     debugger;
     setOpenModal(false);
@@ -44,19 +44,22 @@ function TodoItem(props) {
   const onCancel = () => {
     setOpen(false);
   };
+  const aggCalendarGoogle = (task) => {
+    AggCalendarItem(task);
+  };
 
-
-  const editRow =(task)=>{
+  const editRow = (task) => {
     setOpen(true);
     setModalEditar({
-      id: task.id, 
+      id: task.id,
       title: task.title,
       description: task.description,
-      expirationDate: task.expirationDate
-    
-    })
-debugger
-  }
+      expirationDate: task.expirationDate,
+      timeCalendar: task.timeCalendar,
+      location: task.location,
+    });
+    debugger;
+  };
   return (
     <>
       <div className="Principal_item">
@@ -76,16 +79,27 @@ debugger
           >
             {props.text.title}
           </p>
-          <button onClick={()=>editRow(props.text)}>
-            <HistoryEduIcon />
-          </button>
+          <div className="TodoItemButton">
+            <button
+              className="editarItem itembuttonA"
+              onClick={() => editRow(props.text)}
+            >
+              <HistoryEduIcon />
+            </button>
+            <button
+              className="AggCalendarItem itembuttonA"
+              onClick={() => aggCalendarGoogle(props.text)}
+            >
+              <CalendarMonthIcon />
+            </button>
+          </div>
           <span className="Icon Icon-delete" onClick={props.onDelete}>
             <HighlightOffIcon />
           </span>
         </li>
       </div>
-
       <div>
+
         <Modal
           open={open}
           onClose={handleClose}
@@ -119,6 +133,29 @@ debugger
                 onChange={onChange}
                 value={modalEditar.expirationDate}
               />
+              <div className="timeCalendarContainer">
+                <div className="timeCalendarHora">
+                  <h2>Hora:</h2>
+                  <input
+                    type="time"
+                    className="timeCalendar"
+                    name="timeCalendar"
+                    onChange={onChange}
+                    value={modalEditar.timeCalendar}
+                  />
+                </div>
+                <div className="timeCalendarLocation">
+                  <h3>lugar: </h3>
+                  <input
+                    type="text"
+                    name="location"
+                    className="form-control"
+                    placeholder="lugar"
+                    onChange={onChange}
+                    value={modalEditar.location}
+                  />
+                </div>
+              </div>
               <div className="TodoForm-buttonContainer">
                 <button
                   type="button"
@@ -139,6 +176,7 @@ debugger
           </Box>
         </Modal>
       </div>
+      
     </>
   );
 }

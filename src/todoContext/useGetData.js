@@ -4,7 +4,7 @@ const {
     REACT_APP_SERVER,
   } = process.env;
 
-function useLocalStorage(){
+function useGetData(){
     const [loading, setloading] = useState(true)
     const [error, setError] = useState(false)
     const [item, setItem] = useState([])
@@ -21,22 +21,12 @@ function useLocalStorage(){
       setError(error)
     }
   }
-    //guardamos los datos en el localstorage. para persistencia de datos
-    const saveItem=(newItem)=>{
-     try {
-      const stringifiedItem = JSON.stringify(newItem);
-   
-      setItem(newItem)
-     } catch (error) {
-       setError(error)
-     }
-      }
+
   return {
     item,
-    saveItem,
     loading, 
     error
   }
     }
 
-    export {useLocalStorage}
+    export {useGetData}
